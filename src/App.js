@@ -3,13 +3,12 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Header from "./components/Header/Header";
 
 function App() {
-
   return (
-    <div className="App">
-        <Header />
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-        </Routes>
+    <div className="App" style={{ overflowX: "hidden" }}>
+      <Header />
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+      </Routes>
     </div>
   );
 }
