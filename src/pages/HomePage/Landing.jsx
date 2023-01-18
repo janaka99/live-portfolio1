@@ -49,7 +49,7 @@ const Hero = styled.section`
   max-width: 1366px;
   margin: 0 auto;
   margin: 0 auto;
-  height: 100vh;
+  height: calc(100vh - 50px);
   position: relative;
 
   @media screen and (max-width: 768px) {
