@@ -70,7 +70,7 @@ const Container = styled.div`
   text-align: center;
   position: absolute;
   transform: translateX(-50%) translateY(-50%);
-  top: 55%;
+  top: 50%;
   left: 50%;
 `;
 const Text = styled.div`
