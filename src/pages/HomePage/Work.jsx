@@ -3,6 +3,7 @@ import React, { useState, useEffect, useLayoutEffect } from "react";
 
 import NatureLandingPage from "../../assets/natureLandingPage.png";
 import sanityClient from "../../client.js";
+import { motion } from "framer-motion";
 
 const Work = () => {
   const [details, setDetails] = useState([]);
@@ -24,12 +25,43 @@ const Work = () => {
 
   return (
     <Section id="projects">
-      <Title>
+      <Title
+        initial={{
+          x: -100,
+          opacity: 0,
+        }}
+        whileInView={{
+          x: 0,
+          opacity: 1,
+        }}
+        transition={{
+          duration: 1.5,
+        }}
+        viewport={{
+          once: true,
+        }}
+      >
         <span>Sample</span> Projects
       </Title>
       <ItemContainer>
         {details.map((detail) => (
-          <Item key={detail.imageUrl}>
+          <Item
+            initial={{
+              x: 100,
+              opacity: 0,
+            }}
+            whileInView={{
+              x: 0,
+              opacity: 1,
+            }}
+            transition={{
+              duration: 1.5,
+            }}
+            viewport={{
+              once: true,
+            }}
+            key={detail.imageUrl}
+          >
             <Image src={detail.imageUrl} />
             <Desc>
               <ItemTitle>
@@ -58,7 +90,7 @@ const Section = styled.section`
   }
 `;
 
-const Title = styled.div`
+const Title = styled(motion.div)`
   font-size: 30px;
   font-weight: 900;
   text-align: center;
@@ -82,7 +114,7 @@ const ItemContainer = styled.div`
     grid-template-columns: 1fr;
   }
 `;
-const Item = styled.div`
+const Item = styled(motion.div)`
   aspect-ratio: 3/2;
   overflow: hidden;
   height: fit-content;

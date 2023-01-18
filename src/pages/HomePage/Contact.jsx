@@ -1,13 +1,44 @@
+import { motion } from "framer-motion";
 import React from "react";
 import styled from "styled-components";
 
 const Contact = () => {
   return (
     <Section id="contact">
-      <Title>
+      <Title
+        initial={{
+          x: -100,
+          opacity: 0,
+        }}
+        whileInView={{
+          x: 0,
+          opacity: 1,
+        }}
+        transition={{
+          duration: 1.5,
+        }}
+        viewport={{
+          once: true,
+        }}
+      >
         <span>Get</span> in Touch
       </Title>
-      <Container>
+      <Container
+        initial={{
+          x: 100,
+          opacity: 0,
+        }}
+        whileInView={{
+          x: 0,
+          opacity: 1,
+        }}
+        transition={{
+          duration: 1.5,
+        }}
+        viewport={{
+          once: true,
+        }}
+      >
         <Desc>How can we help you? I'd love to hear from you:</Desc>
         <ContactContainer>
           <Item>JanakaChamith88@Gmail.com</Item>
@@ -32,7 +63,7 @@ const Section = styled.section`
   }
 `;
 
-const Title = styled.div`
+const Title = styled(motion.div)`
   font-size: 30px;
   font-weight: 900;
   text-align: center;
@@ -45,7 +76,7 @@ const Title = styled.div`
   }
 `;
 
-const Container = styled.div`
+const Container = styled(motion.div)`
   background-color: #292929;
   width: fit-content;
   margin: 0 auto;

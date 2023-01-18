@@ -11,29 +11,38 @@ const Landing = () => {
     bio: "",
   };
   const [details, setDetails] = useState(initialState);
+  const [loaded, setloaded] = useState(false);
 
   useEffect(() => {
-    sanityClient
-      .fetch(
+    async function fetchData() {
+      const data = await sanityClient.fetch(
         `*[_type == "pageInfo"]{
         name, role, bio
       }`
-      )
-      .then((data) => {
-        setDetails(data[0]);
-      })
-      .catch(console.error);
+      );
+      // .then((data) => {
+      //   setDetails(data[0]);
+      // })
+      // .catch(console.error);
+      setDetails(data[0]);
+      setloaded(true);
+    }
+    fetchData();
   }, []);
 
   return (
     <Hero>
-      <Container>
-        <Text>Hi, MY NAME IS</Text>
-        <Title>{details.name}.</Title>
-        <Title>I am a {details.role}.</Title>
-        <About>{details.bio}</About>
-        <Button>Do You Want to Work With Me?</Button>
-      </Container>
+      {loaded ? (
+        <Container>
+          <Text>Hi, MY NAME IS</Text>
+          <Title>{details.name}.</Title>
+          <Title>I am a {details.role}.</Title>
+          <About>{details.bio}</About>
+          <Button>Do You Want to Work With Me?</Button>
+        </Container>
+      ) : (
+        <Container></Container>
+      )}
     </Hero>
   );
 };

@@ -2,11 +2,24 @@ import React from "react";
 import styled, { keyframes } from "styled-components";
 import { NavLink, Link } from "react-router-dom";
 import { HashLink } from "react-router-hash-link";
+import { motion } from "framer-motion";
 
 const Header = () => {
   return (
     <Nav>
-      <Container>
+      <Container
+        initial={{
+          y: -100,
+          opacity: 0,
+        }}
+        animate={{
+          y: 0,
+          opacity: 1,
+        }}
+        transition={{
+          duration: 1.5,
+        }}
+      >
         <Logo> Janaka </Logo>
         <List>
           <Item to="#contact">Contact</Item>
@@ -21,7 +34,7 @@ const Header = () => {
 
 export default Header;
 
-const Nav = styled.header`
+const Nav = styled(motion.header)`
   width: 100%;
   height: 50px;
   position: absolute;
@@ -31,12 +44,9 @@ const Nav = styled.header`
   z-index: 11;
   position: sticky;
   background-color: #191919;
-  @media screen and (max-width: 768px) {
-    width: 95%;
-  }
 `;
 
-const Container = styled.nav`
+const Container = styled(motion.nav)`
   max-width: 1366px;
   height: 100%;
   width: 85%;
@@ -44,6 +54,9 @@ const Container = styled.nav`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  @media screen and (max-width: 768px) {
+    width: 95%;
+  }
 `;
 const Logo = styled.div`
   font-size: 30px;

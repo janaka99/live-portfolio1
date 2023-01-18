@@ -5,6 +5,7 @@ import styled, { keyframes } from "styled-components";
 import sanityClient from "../../client.js";
 import imageUrlBuilder from "@sanity/image-url";
 import { SocialIcon } from "react-social-icons";
+import { motion } from "framer-motion";
 
 const AboutMe = () => {
   const name = useRef();
@@ -76,7 +77,22 @@ const AboutMe = () => {
           {/* <h2>{`Header inside viewport ${useInView}.`}</h2> */}
           <div ref={ele}></div>
         </ImageContainer>
-        <AboutSection>
+        <AboutSection
+          initial={{
+            x: 100,
+            opacity: 0,
+          }}
+          whileInView={{
+            x: 0,
+            opacity: 1,
+          }}
+          transition={{
+            duration: 1.5,
+          }}
+          viewport={{
+            once: true,
+          }}
+        >
           <Title>
             I'am <span>{details.name}</span>
           </Title>
@@ -168,7 +184,7 @@ const ImageContainer = styled.div`
     animation: ${slideOut} 1.5s ease-in-out forwards;
   }
 `;
-const AboutSection = styled.div`
+const AboutSection = styled(motion.div)`
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -178,7 +194,7 @@ const AboutSection = styled.div`
     margin-top: 50px;
   }
 `;
-const Title = styled.div`
+const Title = styled(motion.div)`
   font-size: 30px;
   font-weight: 900;
   margin-bottom: 20px;
@@ -192,7 +208,7 @@ const Title = styled.div`
 const Description = styled.div`
   font-weight: 600;
   letter-spacing: 1px;
-  .sec {
+  /* .sec {
     margin-bottom: 10px;
   }
   .desc {
@@ -200,7 +216,7 @@ const Description = styled.div`
   }
   .anim {
     animation: ${slideIn} 1.5s ease-in-out forwards;
-  }
+  } */
 `;
 const SocialLinks = styled.div`
   display: flex;
