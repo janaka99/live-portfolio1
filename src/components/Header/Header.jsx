@@ -9,34 +9,11 @@ import { useState } from "react";
 import { createRef } from "react";
 
 const Header = () => {
-  const navbarShow = useRef(null);
-  const hamburgerIcon = useRef();
-  const [visible, setvisible] = useState(false);
+  const [navActive, setnavActive] = useState(false);
 
-  const handleNavBar = (e) => {
-    if (visible == true) {
-      navbarShow.current.classList.remove("show");
-      setvisible(false);
-    } else {
-      navbarShow.current.classList.add("show");
-      setvisible(true);
-    }
+  const handleNavBar = () => {
+    setnavActive(!navActive);
   };
-
-  const handleDocumentClick = () => {
-    document.addEventListener("click", (e) => {
-      if (
-        !navbarShow.current.contains(e.target) &&
-        !hamburgerIcon.current.contains(e.target)
-      ) {
-        setvisible(false);
-      }
-    });
-  };
-
-  useEffect(() => {
-    handleDocumentClick();
-  }, []);
 
   return (
     <Nav>
@@ -56,8 +33,6 @@ const Header = () => {
         <Logo> Janaka </Logo>
 
         <List
-          ref={navbarShow}
-          $visible={visible}
           initial={{
             y: -100,
             opacity: 0,
@@ -69,20 +44,21 @@ const Header = () => {
           transition={{
             duration: 1.5,
           }}
+          navActive={navActive}
         >
-          <Item to="#contact">Contact</Item>
-          <Item to="#projects">Projects</Item>
-          <Item to="#skills">Skills</Item>
-          <Item to="#home">Home</Item>
+          <Item to="#contact">CONTACT</Item>
+          <Item to="#projects">PROJECTS</Item>
+          <Item to="#skills">SKILLS</Item>
+          <Item to="#home">HOME</Item>
         </List>
-        <BurgerWrapper ref={hamburgerIcon} onClick={(e) => handleNavBar(e)}>
-          <HamburgerMenu />
+        <BurgerWrapper>
+          <HamburgerMenu onClick={handleNavBar} />
         </BurgerWrapper>
       </Container>
     </Nav>
   );
 };
-
+// 🙎‍♂️I have been coding for more than 3 years. I'am freelance web developer who loves building full-stack application & learning new technologies.I am currently a Software Engineer undergraduate🎓. Also, I am fascinated about forex trading and blogging. Besides all, i have two dogs named 'Tobby' and 'Sheeba' who are best friends of mine 🐶 .
 export default Header;
 
 const navbarAnimaitonShow = keyframes`
@@ -121,6 +97,10 @@ const Nav = styled(motion.header)`
 `;
 const BurgerWrapper = styled.div`
   z-index: 12121;
+  display: none;
+  @media screen and (max-width: 768px) {
+    display: flex;
+  }
 `;
 const Container = styled(motion.nav)`
   max-width: 1366px;
@@ -130,13 +110,6 @@ const Container = styled(motion.nav)`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  @media screen and (max-width: 768px) {
-    .show {
-      height: fit-content;
-      padding: 20px 0;
-      transition: all 0.5s ease-in-out;
-    }
-  }
 `;
 const Logo = styled.div`
   font-size: 30px;
@@ -158,12 +131,10 @@ const List = styled.div`
     left: 0;
     width: 100vw;
     flex-direction: column;
-    gap: 20px;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
     overflow: hidden;
-    height: 0;
-    padding: 0;
+    height: ${(props) => (props.navActive ? "200px" : "0px")};
     transition: all 0.5s ease-in-out;
   }
 `;
@@ -180,11 +151,12 @@ const HamburgerMenu = styled(RxHamburgerMenu)`
 const Item = styled(HashLink)`
   margin-left: 10px;
   color: #ffffffc3;
-  font-size: 15px;
+  font-size: 14px;
   font-weight: bold;
   cursor: pointer;
   transition: all 0.1s ease-in-out;
   text-decoration: none;
+  letter-spacing: 1.2px;
   &:hover {
     color: #53ccf5df;
     transition: all 0.1s ease-in-out;
