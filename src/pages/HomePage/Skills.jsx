@@ -37,7 +37,7 @@ const Skills = () => {
           once: true,
         }}
       >
-        I have <span>Skills</span> on
+        I have <span>Skills on</span>
       </Title>
       <ItemContainer>
         {details.map((detail) => (
@@ -81,16 +81,41 @@ const Container = styled.section`
     width: 95%;
   }
 `;
+// const Title = styled(motion.div)`
+//   font-size: 50px;
+//   font-weight: 900;
+//   text-align: center;
+//   margin-bottom: 50px;
+//   span {
+//     background-image: linear-gradient(to right, #4885eee6, #53ccf5df);
+//     background-clip: text;
+//     -webkit-background-clip: text;
+//     color: transparent;
+//   }
+// `;
+
 const Title = styled(motion.div)`
-  font-size: 30px;
-  font-weight: 900;
-  text-align: center;
+  letter-spacing: 2px;
+  font-weight: bold;
+  font-size: 50px;
+  color: gray;
+  margin-bottom: 10px;
+  letter-spacing: 5px;
+  text-transform: uppercase;
   margin-bottom: 50px;
+  text-align: center;
   span {
-    background-image: linear-gradient(to right, #4885eee6, #53ccf5df);
-    background-clip: text;
-    -webkit-background-clip: text;
-    color: transparent;
+    color: #5bd6ff;
+  }
+`;
+const Item = styled(motion.div)`
+  padding: 30px 20px;
+  background-color: #1d1d1d;
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+  &:hover {
+    transform: translateX(3px) translateY(-3px);
+    transition: all 0.2s ease-in-out;
   }
 `;
 
@@ -106,16 +131,7 @@ const ItemContainer = styled.div`
     grid-template-columns: 1fr;
   }
 `;
-const Item = styled(motion.div)`
-  padding: 30px 20px;
-  background-color: #1d1d1d;
-  /* transition: all 0.2s ease-in-out;
 
-  &:hover {
-    transform: translateX(3px) translateY(-3px);
-    transition: all 0.2s ease-in-out;
-  } */
-`;
 const Image = styled.img`
   width: 40px;
   aspect-ratio: 1;

@@ -21,7 +21,7 @@ const Contact = () => {
           once: true,
         }}
       >
-        <span>Get</span> in Touch
+        Let's <span>Talk</span>
       </Title>
       <Container
         initial={{
@@ -39,10 +39,12 @@ const Contact = () => {
           once: true,
         }}
       >
-        <Desc>How can we help you? I'd love to hear from you:</Desc>
+        <Desc>
+          I would love to hear from you! Whether you have a question, a project
+          idea, or just want to say hello, feel free to reach out.
+        </Desc>
         <ContactContainer>
           <Item>JanakaChamith88@Gmail.com</Item>
-          <Tele>+9476 766 1535</Tele>
         </ContactContainer>
       </Container>
     </Section>
@@ -53,64 +55,56 @@ export default Contact;
 
 const Section = styled.section`
   padding: 0 0 50px 0;
-  width: 85%;
+  width: 100%;
   max-width: 1366px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
   @media screen and (max-width: 768px) {
-    width: 95%;
+    width: 100%;
   }
 `;
 
 const Title = styled(motion.div)`
-  font-size: 30px;
-  font-weight: 900;
-  text-align: center;
+  letter-spacing: 2px;
+  font-weight: bold;
+  font-size: 50px;
+  color: gray;
+  margin-bottom: 10px;
+  letter-spacing: 5px;
+  text-transform: uppercase;
   margin-bottom: 50px;
+  text-align: center;
   span {
-    background-image: linear-gradient(to right, #4885eee6, #53ccf5df);
-    background-clip: text;
-    -webkit-background-clip: text;
-    color: transparent;
+    color: #5bd6ff;
   }
 `;
 
 const Container = styled(motion.div)`
-  background-color: #292929;
-  width: fit-content;
+  width: 100%;
   margin: 0 auto;
   padding: 20px;
   border-radius: 15px;
 `;
 
 const Desc = styled.div`
+  width: 60%;
+  margin: 0 auto;
   text-align: center;
   font-weight: bold;
   margin-top: 20px;
+  font-size: 18px;
+  letter-spacing: 1.2px;
 `;
 const ContactContainer = styled.div`
   display: flex;
-  margin: 20px;
-  flex-direction: column;
   align-items: center;
+  justify-content: center;
+  width: 100%;
+  gap: 20px;
+  margin: 20px auto;
 `;
-const Item = styled.div`
-  background-image: linear-gradient(to right, #4884ee, #06bcfb);
-  padding: 10px 40px;
-  width: fit-content;
-  font-size: 14px;
-  font-weight: bold;
-  color: #ffffffed;
-  transition: all 1s ease-in-out;
-  border-radius: 50px;
-  margin: 20px 0;
-  cursor: pointer;
-  &:hover {
-    background-image: linear-gradient(to right, #548af7, #12bdf7df);
-    transition: all 01s ease-in-out;
-  }
-`;
+
 const Tele = styled.div`
   background-image: linear-gradient(to right, #4884ee, #06bcfb);
   padding: 10px 40px;
@@ -124,5 +118,28 @@ const Tele = styled.div`
   &:hover {
     background-image: linear-gradient(to right, #548af7, #12bdf7df);
     transition: all 01s ease-in-out;
+  }
+`;
+
+const Item = styled.div`
+  color: #ffffffc3;
+  font-size: 15px;
+  cursor: pointer;
+  transition: all 0.1s ease-in-out;
+  text-decoration: none;
+  letter-spacing: 1.2px;
+  font-weight: 600;
+  border: 1px solid #5bd6ff;
+  padding: 10px 15px;
+  color: #5bd6ff;
+  margin-top: 20px;
+  width: fit-content;
+  &:hover {
+    transition: all 0.1s ease-in-out;
+    text-shadow: 0 0 5px #5bd6ff;
+    box-sizing: 0 0 5px #5bd6ff;
+  }
+  @media screen and (max-width: 768px) {
+    margin: 20px auto;
   }
 `;

@@ -3,8 +3,14 @@ import { useState } from "react";
 import { useEffect } from "react";
 import styled, { keyframes } from "styled-components";
 import sanityClient from "../../client.js";
+import { Typewriter } from "react-simple-typewriter";
+import Lottie, { LottieRefCurrentProps } from "lottie-react";
+import animationData from "../../components/animation/91382-web-development.json";
+import { useRef } from "react";
 
 const Landing = () => {
+  const animation = useRef < LottieRefCurrentProps > null;
+
   const initialState = {
     name: "",
     role: "",
@@ -20,10 +26,6 @@ const Landing = () => {
         name, role, bio
       }`
       );
-      // .then((data) => {
-      //   setDetails(data[0]);
-      // })
-      // .catch(console.error);
       setDetails(data[0]);
       setloaded(true);
     }
@@ -33,13 +35,35 @@ const Landing = () => {
   return (
     <Hero>
       {loaded ? (
-        <Container>
-          <Text>Hi, MY NAME IS</Text>
-          <Title>{details.name}.</Title>
-          <Title>I am a {details.role}.</Title>
-          <About>{details.bio}</About>
-          <Button>Do You Want to Work With Me?</Button>
-        </Container>
+        <>
+          <Container>
+            <Text>Hi, MY NAME IS</Text>
+            <Title>{details.name}.</Title>
+            <Title2>
+              I am a{" "}
+              <span>
+                <Typewriter
+                  words={["Front-End Dev", "Back-End Dev"]}
+                  cursor
+                  cursorStyle="_"
+                  loop={false}
+                  typeSpeed={100}
+                  deleteSpeed={50}
+                  delaySpeed={1500}
+                />
+              </span>
+            </Title2>
+            <About>{details.bio}</About>
+            <ItemDW>Lets, Talk?</ItemDW>
+          </Container>
+          <Background>
+            <Lottie
+              loop={true}
+              lottieRef={animation}
+              animationData={animationData}
+            />
+          </Background>
+        </>
       ) : (
         <Container></Container>
       )}
@@ -60,18 +84,40 @@ const Hero = styled.section`
   margin: 0 auto;
   height: calc(100vh - 50px);
   position: relative;
-
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   @media screen and (max-width: 768px) {
     width: 95%;
   }
 `;
+
+const Background = styled.div`
+  width: 40%;
+
+  @media screen and (max-width: 768px) {
+    display: none;
+  }
+  div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+`;
+
 const Container = styled.div`
-  width: 100%;
-  text-align: center;
-  position: absolute;
-  transform: translateX(-50%) translateY(-50%);
-  top: 50%;
-  left: 50%;
+  width: 50%;
+  text-align: left;
+  top: 25%;
+  left: 0;
+  @media screen and (max-width: 768px) {
+    width: 95%;
+    position: absolute;
+    transform: translateX(-50%) translateY(-50%);
+    top: 50%;
+    left: 50%;
+    text-align: center;
+  }
 `;
 const Text = styled.div`
   letter-spacing: 2px;
@@ -85,18 +131,36 @@ const Text = styled.div`
 const Title = styled.div`
   font-size: calc(35px + (55 - 35) * ((100vw - 366px) / (1366 - 366)));
   font-weight: 900;
-  background-image: linear-gradient(to right, #4885eee6, #53ccf5df);
+  /* background-image: linear-gradient(to right, #4885eee6, #53ccf5df);
   background-clip: text;
   -webkit-background-clip: text;
-  color: transparent;
+  color: transparent; */
+  color: #5bd6ff;
   opacity: 0;
   animation: ${LandingAnimation} 0.8s ease-in 0.2s;
   animation-fill-mode: forwards;
 `;
+
+const Title2 = styled.div`
+  font-size: calc(20px + (40 - 20) * ((100vw - 366px) / (1366 - 366)));
+  font-weight: 900;
+  /* background-image: linear-gradient(to right, #4885eee6, #53ccf5df); */
+  color: #5bd6ff;
+  /* background-clip: text;
+  -webkit-background-clip: text; */
+  /* color: transparent; */
+  opacity: 0;
+  animation: ${LandingAnimation} 0.8s ease-in 0.2s;
+  animation-fill-mode: forwards;
+  span {
+    color: #4885eead;
+  }
+`;
+
 const About = styled.div`
   font-weight: 600;
   max-width: 600px;
-  margin: 0 auto;
+  /* margin: 0 auto; */
   margin-top: 20px;
   opacity: 0;
 
@@ -110,7 +174,7 @@ const Button = styled.div`
   font-size: 14px;
   font-weight: bold;
   color: #ffffffed;
-  margin: 0 auto;
+  /* margin: 0 auto; */
   margin-top: 30px;
   border-radius: 50px;
   cursor: pointer;
@@ -122,5 +186,31 @@ const Button = styled.div`
   &:hover {
     background-image: linear-gradient(#548af7, #12bdf7df);
     transition: all 01s ease-in-out;
+  }
+`;
+
+const ItemDW = styled.div`
+  color: #ffffffc3;
+  font-size: 15px;
+  cursor: pointer;
+  transition: all 0.1s ease-in-out;
+  text-decoration: none;
+  letter-spacing: 1.2px;
+  font-weight: 600;
+  border: 1px solid #5bd6ff;
+  padding: 10px 15px;
+  color: #5bd6ff;
+  margin-top: 20px;
+  width: fit-content;
+  opacity: 0;
+  animation: ${LandingAnimation} 0.8s ease-in 0.6s forwards;
+  animation-fill-mode: forwards;
+  &:hover {
+    transition: all 0.1s ease-in-out;
+    text-shadow: 0 0 5px #5bd6ff;
+    box-sizing: 0 0 5px #5bd6ff;
+  }
+  @media screen and (max-width: 768px) {
+    margin: 20px auto;
   }
 `;

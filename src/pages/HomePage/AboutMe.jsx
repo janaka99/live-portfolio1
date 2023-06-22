@@ -104,7 +104,7 @@ const AboutMe = () => {
           <SocialLinks>
             {socials.map((social) => (
               <Item key={social.link}>
-                <Sicon url={social.link} />
+                <Sicon url={social.link} bgColor="#5bd6ff" />
               </Item>
             ))}
           </SocialLinks>
@@ -156,7 +156,6 @@ const ImageContainer = styled.div`
   min-height: 300px;
   max-height: 300px;
   background-image: url(${(props) => (props.imgUrl ? props.imgUrl : "")});
-  /* background-image: url("https://images.unsplash.com/flagged/photo-1570612861542-284f4c12e75f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"); */
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -199,10 +198,11 @@ const Title = styled(motion.div)`
   font-weight: 900;
   margin-bottom: 20px;
   span {
-    background-image: linear-gradient(to right, #4885eee6, #53ccf5df);
+    /* background-image: linear-gradient(to right, #4885eee6, #53ccf5df);
     background-clip: text;
     -webkit-background-clip: text;
-    color: transparent;
+    color: transparent; */
+    color: #5bd6ff;
   }
 `;
 const Description = styled.div`

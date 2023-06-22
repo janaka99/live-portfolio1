@@ -41,7 +41,7 @@ const Work = () => {
           once: true,
         }}
       >
-        <span>Sample</span> Projects
+        Sample<span> Projects </span>
       </Title>
       <ItemContainer>
         {details.map((detail) => (
@@ -90,16 +90,30 @@ const Section = styled.section`
   }
 `;
 
+// const Title = styled(motion.div)`
+//   font-size: 50px;
+//   font-weight: 900;
+//   text-align: center;
+//   margin-bottom: 50px;
+//   span {
+//     background-image: linear-gradient(to right, #4885eee6, #53ccf5df);
+//     background-clip: text;
+//     -webkit-background-clip: text;
+//     color: transparent;
+//   }
+// `;
 const Title = styled(motion.div)`
-  font-size: 30px;
-  font-weight: 900;
-  text-align: center;
+  letter-spacing: 2px;
+  font-weight: bold;
+  font-size: 50px;
+  color: gray;
+  margin-bottom: 10px;
+  letter-spacing: 5px;
+  text-transform: uppercase;
   margin-bottom: 50px;
+  text-align: center;
   span {
-    background-image: linear-gradient(to right, #4885eee6, #53ccf5df);
-    background-clip: text;
-    -webkit-background-clip: text;
-    color: transparent;
+    color: #5bd6ff;
   }
 `;
 const ItemContainer = styled.div`

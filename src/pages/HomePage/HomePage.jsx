@@ -6,6 +6,7 @@ import Contact from "./Contact";
 import Landing from "./Landing";
 import Skills from "./Skills";
 import Work from "./Work";
+import Footer from "../../components/Footer/Footer";
 
 const HomePage = () => {
   return (
@@ -15,6 +16,7 @@ const HomePage = () => {
       <Skills />
       <Work />
       <Contact />
+      <Footer />
     </Container>
   );
 };

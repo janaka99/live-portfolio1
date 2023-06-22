@@ -1,12 +1,9 @@
 import React, { useEffect } from "react";
 import styled, { keyframes } from "styled-components";
-import { NavLink, Link } from "react-router-dom";
 import { HashLink } from "react-router-hash-link";
 import { motion } from "framer-motion";
 import { RxHamburgerMenu } from "react-icons/rx";
-import { useRef } from "react";
 import { useState } from "react";
-import { createRef } from "react";
 
 const Header = () => {
   const [navActive, setnavActive] = useState(false);
@@ -49,7 +46,7 @@ const Header = () => {
           <Item to="#contact">CONTACT</Item>
           <Item to="#projects">PROJECTS</Item>
           <Item to="#skills">SKILLS</Item>
-          <Item to="#home">HOME</Item>
+          <ItemDW to="#home">RESUME</ItemDW>
         </List>
         <BurgerWrapper>
           <HamburgerMenu onClick={handleNavBar} />
@@ -58,7 +55,6 @@ const Header = () => {
     </Nav>
   );
 };
-// 🙎‍♂️I have been coding for more than 3 years. I'am freelance web developer who loves building full-stack application & learning new technologies.I am currently a Software Engineer undergraduate🎓. Also, I am fascinated about forex trading and blogging. Besides all, i have two dogs named 'Tobby' and 'Sheeba' who are best friends of mine 🐶 .
 export default Header;
 
 const navbarAnimaitonShow = keyframes`
@@ -86,14 +82,15 @@ const navbarAnimaitonHide = keyframes`
 const Nav = styled(motion.header)`
   width: 100%;
   height: 50px;
-  /* position: absolute; */
   top: 0;
   left: 0;
   right: 0;
   z-index: 11;
   position: sticky;
   background-color: #191919;
-  /* position: relative; */
+  @media screen and (min-width: 768px) {
+    padding-top: 30px;
+  }
 `;
 const BurgerWrapper = styled.div`
   z-index: 12121;
@@ -123,12 +120,15 @@ const Logo = styled.div`
 
 const List = styled.div`
   display: flex;
+  gap: 30px;
+  align-items: center;
   @media screen and (max-width: 768px) {
     width: 95%;
     background-color: #323232;
     position: absolute;
     top: 50px;
     left: 0;
+    gap: 0;
     width: 100vw;
     flex-direction: column;
     justify-content: space-around;
@@ -149,16 +149,37 @@ const HamburgerMenu = styled(RxHamburgerMenu)`
 `;
 
 const Item = styled(HashLink)`
-  margin-left: 10px;
+  margin-left: 30px;
   color: #ffffffc3;
-  font-size: 14px;
-  font-weight: bold;
+  font-size: 13px;
   cursor: pointer;
   transition: all 0.1s ease-in-out;
   text-decoration: none;
   letter-spacing: 1.2px;
+  font-weight: 600;
   &:hover {
-    color: #53ccf5df;
+    color: #5bd6ff;
     transition: all 0.1s ease-in-out;
+    text-shadow: 0 0 5px #5bd6ff;
+  }
+`;
+
+const ItemDW = styled(HashLink)`
+  margin-left: 30px;
+  color: #ffffffc3;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.1s ease-in-out;
+  text-decoration: none;
+  letter-spacing: 1.2px;
+  font-weight: 600;
+  border: 1px solid #5bd6ff;
+  padding: 10px 15px;
+  color: #5bd6ff;
+
+  &:hover {
+    transition: all 0.1s ease-in-out;
+    text-shadow: 0 0 5px #5bd6ff;
+    box-sizing: 0 0 5px #5bd6ff;
   }
 `;

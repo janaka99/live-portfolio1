@@ -1,0 +1,24 @@
+import React from "react";
+import styled from "styled-components";
+
+const Footer = () => {
+  return <Section>Designed & Built By Janaka Chamith</Section>;
+};
+
+export default Footer;
+
+const Section = styled.section`
+  padding: 0 0 50px 0;
+  width: 100%;
+  max-width: 1366px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  letter-spacing: 2px;
+  font-weight: bold;
+  font-size: 12px;
+  color: gray;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  text-align: center;
+`;
