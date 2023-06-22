@@ -94,7 +94,9 @@ const Hero = styled.section`
 
 const Background = styled.div`
   width: 40%;
-
+  opacity: 0;
+  animation: ${LandingAnimation} 0.8s ease-in 0.2s;
+  animation-fill-mode: forwards;
   @media screen and (max-width: 768px) {
     display: none;
   }
@@ -144,11 +146,7 @@ const Title = styled.div`
 const Title2 = styled.div`
   font-size: calc(20px + (40 - 20) * ((100vw - 366px) / (1366 - 366)));
   font-weight: 900;
-  /* background-image: linear-gradient(to right, #4885eee6, #53ccf5df); */
   color: #5bd6ff;
-  /* background-clip: text;
-  -webkit-background-clip: text; */
-  /* color: transparent; */
   opacity: 0;
   animation: ${LandingAnimation} 0.8s ease-in 0.2s;
   animation-fill-mode: forwards;
