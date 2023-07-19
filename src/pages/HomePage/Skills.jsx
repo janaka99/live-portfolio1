@@ -53,7 +53,6 @@ const Skills = () => {
 export default Skills;
 
 const Container = styled.section`
-  padding: 50px 0;
   width: 85%;
   max-width: 1366px;
   margin: 0 auto;
@@ -63,28 +62,16 @@ const Container = styled.section`
     width: 95%;
   }
 `;
-// const Title = styled(motion.div)`
-//   font-size: 50px;
-//   font-weight: 900;
-//   text-align: center;
-//   margin-bottom: 50px;
-//   span {
-//     background-image: linear-gradient(to right, #4885eee6, #53ccf5df);
-//     background-clip: text;
-//     -webkit-background-clip: text;
-//     color: transparent;
-//   }
-// `;
 
 const Title = styled(motion.div)`
   letter-spacing: 2px;
   font-weight: bold;
   font-size: 50px;
   color: gray;
-  margin-bottom: 10px;
   letter-spacing: 5px;
   text-transform: uppercase;
-  margin-bottom: 50px;
+  margin-bottom: 100px;
+  margin-top: 50px;
   text-align: center;
   span {
     color: #5bd6ff;

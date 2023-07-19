@@ -5,8 +5,8 @@ import AboutMe from "./AboutMe";
 import Contact from "./Contact";
 import Landing from "./Landing";
 import Skills from "./Skills";
-import Work from "./Work";
 import Footer from "../../components/Footer/Footer";
+import Projects from "./Projects";
 
 const HomePage = () => {
   return (
@@ -14,7 +14,7 @@ const HomePage = () => {
       <Landing />
       <AboutMe />
       <Skills />
-      <Work />
+      <Projects />
       <Contact />
       <Footer />
     </Container>

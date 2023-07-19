@@ -70,10 +70,10 @@ const Title = styled(motion.div)`
   font-weight: bold;
   font-size: 50px;
   color: gray;
-  margin-bottom: 10px;
+
   letter-spacing: 5px;
   text-transform: uppercase;
-  margin-bottom: 50px;
+  margin-bottom: 100px;
   text-align: center;
   span {
     color: #5bd6ff;
@@ -83,7 +83,7 @@ const Title = styled(motion.div)`
 const Container = styled(motion.div)`
   width: 100%;
   margin: 0 auto;
-  padding: 20px;
+  padding: 0 20px;
   border-radius: 15px;
 `;
 

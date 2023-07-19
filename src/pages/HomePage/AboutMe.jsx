@@ -6,6 +6,11 @@ import sanityClient from "../../client.js";
 import imageUrlBuilder from "@sanity/image-url";
 import { SocialIcon } from "react-social-icons";
 import { motion } from "framer-motion";
+import {
+  AiOutlineGithub,
+  AiOutlineLinkedin,
+  AiOutlineTwitter,
+} from "react-icons/ai";
 
 const AboutMe = () => {
   const name = useRef();
@@ -102,11 +107,15 @@ const AboutMe = () => {
             </div>
           </Description>
           <SocialLinks>
-            {socials.map((social) => (
-              <Item key={social.link}>
-                <Sicon url={social.link} bgColor="#5bd6ff" />
-              </Item>
-            ))}
+            <Sicon href={socials[1]?.link}>
+              <AiOutlineLinkedin size={35} color={"#6DB1F3"} />
+            </Sicon>
+            <Sicon href={socials[0]?.link}>
+              <AiOutlineTwitter size={35} color={"#1DA1F2"} />
+            </Sicon>
+            <Sicon href={socials[2]?.link}>
+              <AiOutlineGithub size={35} color={"#e2e2e2"} />
+            </Sicon>
           </SocialLinks>
         </AboutSection>
       </Container>
@@ -137,6 +146,7 @@ const Section = styled.section`
   overflow-x: hidden;
   max-width: 1366px;
   margin: 0 auto;
+  margin-bottom: 50px;
   @media screen and (max-width: 768px) {
     width: 95%;
   }
@@ -221,19 +231,16 @@ const Description = styled.div`
 const SocialLinks = styled.div`
   display: flex;
   margin: 20px 0;
+  gap: 20px;
   @media screen and (max-width: 668px) {
     justify-content: center;
   }
 `;
-const Item = styled.div`
-  margin-right: 20px;
-  border-radius: 25px;
-  font-size: 13px;
+
+const Sicon = styled.a`
+  transition: all 0.2s ease-in-out;
   cursor: pointer;
-  transition: all 0.2s ease-in-out;
-`;
-const Sicon = styled(SocialIcon)`
-  transition: all 0.2s ease-in-out;
+  text-decoration: none;
 
   &:hover {
     transform: scale(1.1);

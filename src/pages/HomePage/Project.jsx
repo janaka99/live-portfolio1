@@ -37,14 +37,14 @@ const Project = ({ project, reverse }) => {
       reverse={reverse}
     >
       <Image src={project.imageUrl} />
-      <Desc>
+      <Desc reverse={reverse}>
         <ItemTitle>
           <a href={project.link}>{project.title}</a>
         </ItemTitle>
         <ItemDesc>{project.description}</ItemDesc>
         <Technolgies>
           {project.technologies?.map((tech, index) => (
-            <Technology key={index} color={getRandomColor}>
+            <Technology key={index} clr={getRandomColor}>
               {tech}
             </Technology>
           ))}
@@ -54,7 +54,7 @@ const Project = ({ project, reverse }) => {
             <FaExternalLinkAlt size={25} />
           </Deployed>
           <Deployed href={project.github_link}>
-            <AiFillGithub size={25} />
+            <AiFillGithub size={35} />
           </Deployed>
         </Links>
       </Desc>
@@ -72,7 +72,8 @@ const Item = styled(motion.div)`
   display: flex;
   justify-content: space-between;
   @media screen and (min-width: 1024px) {
-    flex-direction: ${(props) => (props.reverse ? "row-reverse" : "")};
+    flex-direction: ${(props) =>
+      props.reverse === "true" ? "row-reverse" : ""};
   }
   @media screen and (max-width: 1024px) {
     flex-direction: column;
@@ -84,6 +85,7 @@ const Image = styled.img`
   height: 350px;
   width: 100%;
   max-width: 450px;
+  object-fit: contain;
 `;
 const Desc = styled.div`
   width: 50%;
@@ -92,9 +94,13 @@ const Desc = styled.div`
   padding: 20px;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   gap: 20px;
   @media screen and (max-width: 1024px) {
     width: 100%;
+  }
+  @media screen and (min-width: 1024px) {
+    align-items: ${(props) => (props.reverse === "true" ? "" : "flex-end")};
   }
 `;
 const ItemTitle = styled.div`
@@ -111,6 +117,9 @@ const ItemTitle = styled.div`
 `;
 const ItemDesc = styled.div`
   color: gray;
+  width: 100%;
+  text-align: justify;
+  text-justify: inter-word;
 `;
 
 const Technolgies = styled.div`
@@ -118,26 +127,33 @@ const Technolgies = styled.div`
   gap: 15px;
 `;
 const Deployed = styled.a`
-  color: #5bd6ff;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 10px;
-  /* border: 1px solid #551a8b; */
-  border: 1px solid #5bd6ff;
-  border-radius: 25px;
-  padding: 8px 28px;
+
   transition: all 0.2s ease-in-out;
-  &:hover {
-    border: 1px solid #5bd6ff;
-    color: #000;
-    background-color: #5bd6ff;
-    transition: all 0.2s ease-in-out;
+
+  &:nth-child(1) {
+    border: none;
+    background-color: none;
+    color: #00b5f1;
+    &:hover {
+      color: #5bd6ff;
+      transition: all 0.2s ease-in-out;
+    }
+  }
+  &:nth-child(2) {
+    color: #a1a0a0;
+    &:hover {
+      color: #e2e2e2;
+      transition: all 0.2s ease-in-out;
+    }
   }
 `;
 const Links = styled.div`
   display: flex;
-  gap: 15px;
+  gap: 25px;
+  width: fit-content;
 `;
 const Sicon = styled(SocialIcon)`
   transition: all 0.2s ease-in-out;
@@ -149,5 +165,5 @@ const Sicon = styled(SocialIcon)`
 `;
 
 const Technology = styled.div`
-  color: ${(props) => props.color};
+  color: ${(props) => props.clr};
 `;

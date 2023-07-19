@@ -35,7 +35,7 @@ const Item = styled(motion.div)`
   transition: all 0.2s ease-in-out;
   cursor: pointer;
   &:hover {
-    transform: translateX(3px) translateY(-3px);
+    translate: 3px -3px;
     transition: all 0.2s ease-in-out;
   }
 `;
