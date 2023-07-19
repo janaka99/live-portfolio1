@@ -2,6 +2,8 @@ import styled from "styled-components";
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import sanityClient from "../../client.js";
+import Project from "./Skill.jsx";
+import Skill from "./Skill.jsx";
 
 const Skills = () => {
   const [details, setDetails] = useState([]);
@@ -40,28 +42,8 @@ const Skills = () => {
         I have <span>Skills on</span>
       </Title>
       <ItemContainer>
-        {details.map((detail) => (
-          <Item
-            key={detail.imageUrl}
-            initial={{
-              x: 100,
-              opacity: 0,
-            }}
-            whileInView={{
-              x: 0,
-              opacity: 1,
-            }}
-            transition={{
-              duration: 1.5,
-            }}
-            viewport={{
-              once: true,
-            }}
-          >
-            <Image src={detail.imageUrl} />
-            <ItemTitle>{detail.title}</ItemTitle>
-            <Desc>{detail.description}</Desc>
-          </Item>
+        {details.map((skill, index) => (
+          <Skill skill={skill} key={index} />
         ))}
       </ItemContainer>
     </Container>

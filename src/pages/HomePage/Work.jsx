@@ -4,6 +4,7 @@ import React, { useState, useEffect, useLayoutEffect } from "react";
 import NatureLandingPage from "../../assets/natureLandingPage.png";
 import sanityClient from "../../client.js";
 import { motion } from "framer-motion";
+import Project from "./Project";
 
 const Work = () => {
   const [details, setDetails] = useState([]);
@@ -14,11 +15,14 @@ const Work = () => {
           link,
           description,
           title,
+          technologies,
+          github_link,
         "imageUrl": image.asset->url
       }`
       )
       .then((data) => {
         setDetails(data);
+        console.log(data);
       })
       .catch(console.error);
   }, []);
@@ -44,32 +48,12 @@ const Work = () => {
         Sample<span> Projects </span>
       </Title>
       <ItemContainer>
-        {details.map((detail) => (
-          <Item
-            initial={{
-              x: 100,
-              opacity: 0,
-            }}
-            whileInView={{
-              x: 0,
-              opacity: 1,
-            }}
-            transition={{
-              duration: 1.5,
-            }}
-            viewport={{
-              once: true,
-            }}
-            key={detail.imageUrl}
-          >
-            <Image src={detail.imageUrl} />
-            <Desc>
-              <ItemTitle>
-                <a href={detail.link}>{detail.title}</a>
-              </ItemTitle>
-              <ItemDesc>{detail.description}</ItemDesc>
-            </Desc>
-          </Item>
+        {details.map((project, index) => (
+          <Project
+            key={index}
+            project={project}
+            reverse={index === 0 ? true : index / 2 !== 0 ? false : true}
+          />
         ))}
       </ItemContainer>
     </Section>
@@ -119,14 +103,8 @@ const Title = styled(motion.div)`
 const ItemContainer = styled.div`
   width: 100%;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 20px;
-  @media screen and (max-width: 1024px) {
-    grid-template-columns: 1fr 1fr;
-  }
-  @media screen and (max-width: 668px) {
-    grid-template-columns: 1fr;
-  }
+  grid-template-columns: 1fr;
+  gap: 50px;
 `;
 const Item = styled(motion.div)`
   aspect-ratio: 3/2;
