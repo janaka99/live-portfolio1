@@ -51,7 +51,7 @@ const Projects = () => {
           <Project
             key={index}
             project={project}
-            reverse={index === 0 ? "true" : index / 2 !== 0 ? "false" : "true"}
+            reverse={index === 0 ? "true" : index % 2 !== 0 ? "false" : "true"}
           />
         ))}
       </ItemContainer>

@@ -19,7 +19,7 @@ const Project = ({ project, reverse }) => {
   return (
     <Item
       initial={{
-        x: reverse ? "100%" : "-100%",
+        x: reverse === "true" ? "100%" : "-100%",
         opacity: 0,
       }}
       whileInView={{
