@@ -1,13 +1,13 @@
-import styled from "styled-components";
-import React, { useState, useEffect, useLayoutEffect } from "react";
-
-import NatureLandingPage from "../../assets/natureLandingPage.png";
-import sanityClient from "../../client.js";
 import { motion } from "framer-motion";
-import Project from "./Project";
-import Loading from "../Loading";
+import React from "react";
+import { useState } from "react";
+import sanityClient from "../../client.js";
+import { useEffect } from "react";
+import styled from "styled-components";
+import Loading from "../Loading.jsx";
+import OtherProject from "./OtherProject.jsx";
 
-const Projects = () => {
+const OtherProjects = () => {
   const [details, setDetails] = useState([]);
   useEffect(() => {
     sanityClient
@@ -30,10 +30,10 @@ const Projects = () => {
     return <Loading />;
   }
   return (
-    <Section id="projects">
+    <Section id="sampleProjects">
       <Title
         initial={{
-          y: "100px",
+          y: 100,
           opacity: 0,
         }}
         whileInView={{
@@ -47,22 +47,19 @@ const Projects = () => {
           once: true,
         }}
       >
-        Sample<span> Projects </span>
+        Other<span> Projects </span>
       </Title>
       <ItemContainer>
-        {details.map((project, index) => (
-          <Project
-            key={index}
-            project={project}
-            reverse={index === 0 ? "true" : index % 2 !== 0 ? "false" : "true"}
-          />
-        ))}
+        <Ul>
+          <OtherProject />
+          <OtherProject />
+        </Ul>
       </ItemContainer>
     </Section>
   );
 };
 
-export default Projects;
+export default OtherProjects;
 
 const Section = styled.section`
   width: 85%;
@@ -91,13 +88,10 @@ const Title = styled(motion.div)`
 `;
 const ItemContainer = styled.div`
   width: 100%;
+  max-width: 768px;
+  margin-inline: auto;
   display: grid;
   grid-template-columns: 1fr;
   gap: 50px;
 `;
-const Item = styled(motion.div)`
-  aspect-ratio: 3/2;
-  overflow: hidden;
-  height: fit-content;
-  position: relative;
-`;
+const Ul = styled.div``;

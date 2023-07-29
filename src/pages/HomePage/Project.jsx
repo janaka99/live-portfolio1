@@ -50,10 +50,18 @@ const Project = ({ project, reverse }) => {
           ))}
         </Technolgies>
         <Links>
-          <Deployed href={project.link}>
+          <Deployed
+            href={project.link}
+            target="_black"
+            rel="noopener noreferrer"
+          >
             <FaExternalLinkAlt size={25} />
           </Deployed>
-          <Deployed href={project.github_link}>
+          <Deployed
+            href={project.github_link}
+            target="_black"
+            rel="noopener noreferrer"
+          >
             <AiFillGithub size={35} />
           </Deployed>
         </Links>

@@ -7,11 +7,11 @@ const Contact = () => {
     <Section id="contact">
       <Title
         initial={{
-          x: -100,
+          y: 100,
           opacity: 0,
         }}
         whileInView={{
-          x: 0,
+          y: 0,
           opacity: 1,
         }}
         transition={{
@@ -25,11 +25,11 @@ const Contact = () => {
       </Title>
       <Container
         initial={{
-          x: 100,
+          y: 100,
           opacity: 0,
         }}
         whileInView={{
-          x: 0,
+          y: 0,
           opacity: 1,
         }}
         transition={{

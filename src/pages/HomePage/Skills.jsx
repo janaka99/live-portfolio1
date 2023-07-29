@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import sanityClient from "../../client.js";
 import Project from "./Skill.jsx";
 import Skill from "./Skill.jsx";
+import Loading from "../Loading.jsx";
 
 const Skills = () => {
   const [details, setDetails] = useState([]);
@@ -21,19 +22,22 @@ const Skills = () => {
       })
       .catch(console.error);
   }, []);
+  if (details.length <= 0) {
+    return <Loading />;
+  }
   return (
     <Container id="skills">
       <Title
         initial={{
-          x: -100,
+          y: "100px",
           opacity: 0,
         }}
         whileInView={{
-          x: 0,
+          y: 0,
           opacity: 1,
         }}
         transition={{
-          duration: 1.5,
+          duration: 1,
         }}
         viewport={{
           once: true,
@@ -77,16 +81,6 @@ const Title = styled(motion.div)`
     color: #5bd6ff;
   }
 `;
-const Item = styled(motion.div)`
-  padding: 30px 20px;
-  background-color: #1d1d1d;
-  transition: all 0.2s ease-in-out;
-  cursor: pointer;
-  &:hover {
-    transform: translateX(3px) translateY(-3px);
-    transition: all 0.2s ease-in-out;
-  }
-`;
 
 const ItemContainer = styled.div`
   width: 100%;
@@ -99,20 +93,4 @@ const ItemContainer = styled.div`
   @media screen and (max-width: 668px) {
     grid-template-columns: 1fr;
   }
-`;
-
-const Image = styled.img`
-  width: 40px;
-  aspect-ratio: 1;
-`;
-const ItemTitle = styled.div`
-  font-size: 22px;
-  font-weight: bold;
-  letter-spacing: 0.5px;
-  margin: 10px 0;
-`;
-const Desc = styled.div`
-  font-size: 14px;
-  font-weight: 500;
-  color: gray;
 `;

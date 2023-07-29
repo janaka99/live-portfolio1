@@ -7,16 +7,12 @@ import { Typewriter } from "react-simple-typewriter";
 import Lottie, { LottieRefCurrentProps } from "lottie-react";
 import animationData from "../../components/animation/91382-web-development.json";
 import { useRef } from "react";
+import Loading from "../Loading.jsx";
 
-const Landing = () => {
+const Landing = ({ setLoading }) => {
   const animation = useRef < LottieRefCurrentProps > null;
 
-  const initialState = {
-    name: "",
-    role: "",
-    bio: "",
-  };
-  const [details, setDetails] = useState(initialState);
+  const [details, setDetails] = useState(null);
   const [loaded, setloaded] = useState(false);
 
   useEffect(() => {
@@ -31,6 +27,10 @@ const Landing = () => {
     }
     fetchData();
   }, []);
+
+  if (details === null) {
+    return <Loading />;
+  }
 
   return (
     <Hero>

@@ -1,13 +1,32 @@
+import { motion } from "framer-motion";
 import React from "react";
 import styled from "styled-components";
 
 const Footer = () => {
-  return <Section>Designed & Built By Janaka Chamith</Section>;
+  return (
+    <Section
+      initial={{
+        opacity: 0,
+      }}
+      whileInView={{
+        opacity: 1,
+      }}
+      transition={{
+        delay: 0.5,
+        duration: 1.5,
+      }}
+      viewport={{
+        once: true,
+      }}
+    >
+      Designed & Built By Janaka Chamith
+    </Section>
+  );
 };
 
 export default Footer;
 
-const Section = styled.section`
+const Section = styled(motion.section)`
   padding: 0 0 50px 0;
   width: 100%;
   max-width: 1366px;

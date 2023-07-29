@@ -6,15 +6,15 @@ const Skill = ({ skill }) => {
     <Item
       key={skill.imageUrl}
       initial={{
-        x: 100,
+        y: 100,
         opacity: 0,
       }}
       whileInView={{
-        x: 0,
+        y: 0,
         opacity: 1,
       }}
       transition={{
-        duration: 1.5,
+        duration: 1,
       }}
       viewport={{
         once: true,
@@ -32,7 +32,7 @@ export default Skill;
 const Item = styled(motion.div)`
   padding: 30px 20px;
   background-color: #1d1d1d;
-  transition: all 0.2s ease-in-out;
+
   cursor: pointer;
   &:hover {
     translate: 3px -3px;

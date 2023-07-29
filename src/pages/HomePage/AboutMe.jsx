@@ -17,34 +17,7 @@ const AboutMe = () => {
   const ele = useRef();
   const ele2 = useRef();
 
-  var anm = false;
-
-  const scrollHandler = (_) => {
-    var h = name.current.getBoundingClientRect().top;
-    const scrollPos = window.scrollY + window.innerHeight;
-    // console.log("item position", h, "  innerHEight", scrollPos);
-
-    if (h < scrollPos) {
-      anm = true;
-      ele.current.className = "anim";
-      ele2.current.className = "desc anim";
-    } else {
-      anm = false;
-    }
-  };
-
-  useLayoutEffect(() => {
-    window.addEventListener("scroll", scrollHandler, true);
-    return () => window.removeEventListener("scroll", scrollHandler, true);
-  }, []);
-  // const builder = imageUrlBuilder(client);
-  const initialState = {
-    name: "",
-    role: "",
-    bio: "",
-  };
-
-  const [details, setDetails] = useState(initialState);
+  const [details, setDetails] = useState(null);
   const [socials, setsocials] = useState([]);
 
   useEffect(() => {
@@ -74,13 +47,29 @@ const AboutMe = () => {
       })
       .catch(console.error);
   }, []);
+  if (details === null) {
+    return <></>;
+  }
 
   return (
     <Section ref={name}>
       <Container>
         <ImageContainer imgUrl={details.imageUrl}>
-          {/* <h2>{`Header inside viewport ${useInView}.`}</h2> */}
-          <div ref={ele}></div>
+          <motion.div
+            initial={{
+              width: "100%",
+            }}
+            transition={{
+              duration: 1,
+            }}
+            whileInView={{
+              width: 0,
+            }}
+            viewport={{
+              once: true,
+            }}
+            ref={ele}
+          ></motion.div>
         </ImageContainer>
         <AboutSection
           initial={{
@@ -107,13 +96,25 @@ const AboutMe = () => {
             </div>
           </Description>
           <SocialLinks>
-            <Sicon href={socials[1]?.link}>
+            <Sicon
+              href={socials[1]?.link}
+              target="_black"
+              rel="noopener noreferrer"
+            >
               <AiOutlineLinkedin size={35} color={"#6DB1F3"} />
             </Sicon>
-            <Sicon href={socials[0]?.link}>
+            <Sicon
+              href={socials[0]?.link}
+              target="_black"
+              rel="noopener noreferrer"
+            >
               <AiOutlineTwitter size={35} color={"#1DA1F2"} />
             </Sicon>
-            <Sicon href={socials[2]?.link}>
+            <Sicon
+              href={socials[2]?.link}
+              target="_black"
+              rel="noopener noreferrer"
+            >
               <AiOutlineGithub size={35} color={"#e2e2e2"} />
             </Sicon>
           </SocialLinks>
@@ -124,22 +125,6 @@ const AboutMe = () => {
 };
 
 export default AboutMe;
-
-const LandingAnimation = keyframes`
-    0%{transform: rotate(3deg);}
-    50%{transform: rotate(-3deg);}
-    100%{transform: rotate(0deg);}
-`;
-
-const slideOut = keyframes`
-    0%{width:100%;}
-    100%{width:0%;}
-`;
-
-const slideIn = keyframes`
-  0%{transform: translateX(100%);}
-  100%{transform: translateX(0%);}
-`;
 
 const Section = styled.section`
   width: 85%;
@@ -184,13 +169,10 @@ const ImageContainer = styled.div`
   }
 
   div {
-    width: 100%;
+    /* width: 100%; */
     height: 100%;
     position: absolute;
     background-color: #292929;
-  }
-  .anim {
-    animation: ${slideOut} 1.5s ease-in-out forwards;
   }
 `;
 const AboutSection = styled(motion.div)`
@@ -208,25 +190,12 @@ const Title = styled(motion.div)`
   font-weight: 900;
   margin-bottom: 20px;
   span {
-    /* background-image: linear-gradient(to right, #4885eee6, #53ccf5df);
-    background-clip: text;
-    -webkit-background-clip: text;
-    color: transparent; */
     color: #5bd6ff;
   }
 `;
 const Description = styled.div`
   font-weight: 600;
   letter-spacing: 1px;
-  /* .sec {
-    margin-bottom: 10px;
-  }
-  .desc {
-    transform: translateX(100%);
-  }
-  .anim {
-    animation: ${slideIn} 1.5s ease-in-out forwards;
-  } */
 `;
 const SocialLinks = styled.div`
   display: flex;
