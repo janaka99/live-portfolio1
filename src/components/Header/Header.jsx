@@ -46,7 +46,9 @@ const Header = () => {
           <Item to="#contact">CONTACT</Item>
           <Item to="#projects">PROJECTS</Item>
           <Item to="#skills">SKILLS</Item>
-          <ItemDW to="#home">RESUME</ItemDW>
+          <ItemDW href="https://drive.google.com/uc?export=download&id=1i4ssaYE1-m1RHuAYX_3z8KhS-xGfOOSb">
+            RESUME
+          </ItemDW>
         </List>
         <BurgerWrapper>
           <HamburgerMenu onClick={handleNavBar} />
@@ -164,7 +166,7 @@ const Item = styled(HashLink)`
   }
 `;
 
-const ItemDW = styled(HashLink)`
+const ItemDW = styled.a`
   margin-left: 30px;
   color: #ffffffc3;
   font-size: 13px;
