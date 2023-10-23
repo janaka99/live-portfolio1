@@ -46,7 +46,7 @@ const Header = () => {
           <Item to="#contact">CONTACT</Item>
           <Item to="#projects">PROJECTS</Item>
           <Item to="#skills">SKILLS</Item>
-          <ItemDW href="https://drive.google.com/uc?export=download&id=1i4ssaYE1-m1RHuAYX_3z8KhS-xGfOOSb">
+          <ItemDW href="https://drive.google.com/file/d/15MoY3Z3y95lxsAPfL-AU3UAPCGo-ZkrX/view?usp=share_link">
             RESUME
           </ItemDW>
         </List>
